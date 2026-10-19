@@ -53,3 +53,18 @@ dialog::backdrop{background:#000}
 .vbar .close{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.look{background:var(--surface);border-radius:24px;padding:10px;margin-bottom:14px}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.strip img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:14px;display:block}
+.lf{display:flex;align-items:center;padding:12px 8px 4px;gap:10px}
+.lf b{flex:1;font:400 24px var(--serif);font-style:italic}
+.lf button{border:1px solid var(--line);background:none;color:var(--ink);width:42px;height:42px;border-radius:50%;font-size:18px}
+.lf button.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+.steps li{counter-increment:s;background:var(--surface);border-radius:22px;padding:18px;margin-bottom:12px;color:var(--mute)}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-size:13px;margin-right:10px}
+.steps img{width:100%;border-radius:14px;margin-top:12px}
+textarea{width:100%;height:110px;margin:12px 0 0;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:14px;padding:12px;font:14px var(--sans)}
+.btn.sm{padding:9px 18px;font-size:14px;margin:8px 8px 0 0}.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.card{display:block;width:100%;text-align:left;background:var(--surface);border:0;color:var(--ink);border-radius:22px;padding:18px;margin-top:12px;font:500 16px var(--sans)}
+.card small{display:block;color:var(--mute);font-weight:400;margin-top:2px}
