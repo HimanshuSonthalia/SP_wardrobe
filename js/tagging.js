@@ -27,11 +27,13 @@ export async function applyTags(text) {
   const rows = JSON.parse(m[0]), sheet = await db.meta.get('sheet'); let n = 0;
   for (const r of rows) {
     const id = sheet?.ids[r.n - 1]; if (!id) continue;
-    const cat = String(r.category || '').toLowerCase().replace('jewelry', 'jewellery');
-    await db.items.update(id, { category: cat, status: 'tagged', tags: {
-      name: r.name, colors: r.colors || [], pattern: r.pattern || 'solid', fabric: r.fabric, formality: +r.formality || 3,
-      seasons: r.seasons || [], style: r.style || 'casual', fit: r.fit || 'relaxed', brand: r.brand || null } });
+    await saveTags(id, r);
     n++;
   }
   return n;
 }
+
+export const saveTags = (id, r) => db.items.update(id, {
+  category: String(r.category || '').toLowerCase().replace('jewelry', 'jewellery'), status: 'tagged',
+  tags: { name: r.name, colors: r.colors || [], pattern: r.pattern || 'solid', fabric: r.fabric, formality: +r.formality || 3,
+    seasons: r.seasons || [], style: r.style || 'casual', fit: r.fit || 'relaxed', brand: r.brand || null } });

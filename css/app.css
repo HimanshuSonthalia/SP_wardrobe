@@ -68,3 +68,16 @@ textarea{width:100%;height:110px;margin:12px 0 0;background:var(--bg);color:var(
 .btn.sm{padding:9px 18px;font-size:14px;margin:8px 8px 0 0}.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
 .card{display:block;width:100%;text-align:left;background:var(--surface);border:0;color:var(--ink);border-radius:22px;padding:18px;margin-top:12px;font:500 16px var(--sans)}
 .card small{display:block;color:var(--mute);font-weight:400;margin-top:2px}
+
+.tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 10px 10px 36px;background:linear-gradient(transparent,rgba(0,0,0,.7));color:#fff;font-size:12px;line-height:1.25}
+.nw.ld{background:#7aa7c7;color:#0d1a24}
+.vimg{flex:0 0 34%}
+.vpanel{flex:1;overflow:auto;padding:6px 22px 12px;display:grid;gap:10px;align-content:start}
+.vpanel label{display:block;color:var(--mute);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fld{width:100%;margin-top:4px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:11px 12px;font:15px var(--sans);text-transform:none;letter-spacing:0}
+input[type=range].fld{padding:6px 0;accent-color:var(--accent)}
+.sc{border:1px solid var(--line);background:none;color:var(--mute);padding:7px 14px;border-radius:18px;font:500 13px var(--sans);margin:0 6px 6px 0}
+.sc.on,.acts .on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.acts{display:flex;gap:8px}.acts button{flex:1;border:1px solid var(--line);background:none;color:var(--ink);padding:11px 4px;border-radius:14px;font:500 14px var(--sans)}
+.stats{color:var(--mute);font-size:14px}

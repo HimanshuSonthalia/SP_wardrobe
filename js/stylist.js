@@ -31,7 +31,7 @@ function occasion(its) {
 }
 
 export async function generate() {
-  const all = await db.items.where('status').equals('tagged').toArray(), by = c => all.filter(i => c.includes(i.category));
+  const all = (await db.items.where('status').equals('tagged').toArray()).filter(i => !i.laundry), by = c => all.filter(i => c.includes(i.category));
   const G = { dress: by(['dress', 'ethnic-set']), top: by(['top']), bottom: by(['bottom']), out: by(['outerwear']), shoes: by(['shoes']), bag: by(['bag']), jew: by(['jewellery']) };
   const seen = new Map();
   for (let n = 0; n < 2500; n++) {
@@ -62,5 +62,6 @@ export async function ranked(savedOnly) {
   const byId = new Map(ls.map(l => [l.id, l])), w = {}, W = { save: 1, skip: -1, view: .1 };
   for (const e of ev) { const l = byId.get(e.ref); if (l && W[e.type]) l.items.forEach(i => w[i] = (w[i] || 0) + W[e.type]); }
   const pref = l => l.items.reduce((a, i) => a + (w[i] || 0), 0) / l.items.length;
-  return ls.filter(l => !l.hidden && (!savedOnly || l.saved)).sort((a, b) => (b.score + pref(b) * .5) - (a.score + pref(a) * .5));
+  const ld = new Set(await db.items.filter(i => i.laundry).primaryKeys());
+  return ls.filter(l => !l.hidden && !l.items.some(i => ld.has(i)) && (!savedOnly || l.saved)).sort((a, b) => (b.score + pref(b) * .5) - (a.score + pref(a) * .5));
 }
